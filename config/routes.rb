@@ -1,5 +1,8 @@
 DiplomacyTurns::Application.routes.draw do
-  devise_for :users
+  resources :turns
 
+
+  devise_for :users
+  get "/home" => "user#home"
   root :to => "user#home"
 end

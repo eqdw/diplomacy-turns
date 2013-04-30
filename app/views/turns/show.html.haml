@@ -1,0 +1,9 @@
+%p#notice= notice
+
+.orders
+  - @turn.orders.split("\n").each do |order|
+    %p= order
+
+= link_to 'Edit', edit_turn_path(@turn)
+\|
+= link_to 'Back', turns_path

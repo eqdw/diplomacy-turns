@@ -1,0 +1,14 @@
+= form_for @turn do |f|
+  - if @turn.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@turn.errors.count, "error")} prohibited this turn from being saved:"
+      %ul
+        - @turn.errors.full_messages.each do |msg|
+          %li= msg
+
+  .turn
+    = f.label     :orders
+    = f.text_area :orders
+
+  .actions
+    = f.submit 'Save'
