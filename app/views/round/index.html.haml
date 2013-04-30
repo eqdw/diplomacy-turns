@@ -1,0 +1,9 @@
+%h1== Round #{Turn.current_inactive_round}
+
+
+%table
+  %tr
+    %th User
+  - @turns.each do |turn|
+    %tr
+      %td= link_to turn.user.email, turn

@@ -2,8 +2,8 @@ class TurnsController < ApplicationController
   # GET /turns
   # GET /turns.json
   def index
-    @inactive_turns = Turn.inactive
-    @turn = Turn.active.first.presence || Turn.new
+    @inactive_turns = Turn.inactive.where(:user_id => current_user.id)
+    @turn = Turn.where(:user_id => current_user.id).active.first.presence || Turn.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,8 @@ class TurnsController < ApplicationController
   # GET /turns/1.json
   def show
     @turn = Turn.find(params[:id])
+    redirect_to turns_path if @turn.active && @turn.user.id != current_user.id
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +28,8 @@ class TurnsController < ApplicationController
   # POST /turns.json
   def create
     @turn = Turn.new(params[:turn])
+
+    @turn.user = current_user
 
     respond_to do |format|
       if @turn.save
