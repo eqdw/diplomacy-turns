@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :turns
   
-  belongs_to :current_turn, :class_name => "Turn", :foreign_key => "turn_id"
+  def active_turn
+    self.turns.active
+  end
   # attr_accessible :title, :body
 end

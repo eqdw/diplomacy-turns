@@ -3,6 +3,7 @@ class TurnsController < ApplicationController
   # GET /turns.json
   def index
     @inactive_turns = Turn.inactive
+    @turn = Turn.active.first.presence || Turn.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +45,7 @@ class TurnsController < ApplicationController
 
     respond_to do |format|
       if @turn.save
-        format.html { redirect_to @turn, notice: 'Turn was successfully created.' }
+        format.html { redirect_to turns_path, notice: 'Turn was successfully created.' }
         format.json { render json: @turn, status: :created, location: @turn }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class TurnsController < ApplicationController
 
     respond_to do |format|
       if @turn.update_attributes(params[:turn])
-        format.html { redirect_to @turn, notice: 'Turn was successfully updated.' }
+        format.html { redirect_to turns_path, notice: 'Turn was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
