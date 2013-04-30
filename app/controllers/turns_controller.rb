@@ -22,22 +22,6 @@ class TurnsController < ApplicationController
     end
   end
 
-  # GET /turns/new
-  # GET /turns/new.json
-  def new
-    @turn = Turn.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @turn }
-    end
-  end
-
-  # GET /turns/1/edit
-  def edit
-    @turn = Turn.find(params[:id])
-  end
-
   # POST /turns
   # POST /turns.json
   def create
@@ -70,15 +54,4 @@ class TurnsController < ApplicationController
     end
   end
 
-  # DELETE /turns/1
-  # DELETE /turns/1.json
-  def destroy
-    @turn = Turn.find(params[:id])
-    @turn.destroy
-
-    respond_to do |format|
-      format.html { redirect_to turns_url }
-      format.json { head :no_content }
-    end
-  end
 end
