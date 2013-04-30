@@ -1,18 +1,13 @@
-%h1 Listing turns
+%h1 Previous turns
+
 
 %table
   %tr
     %th
-    %th
-    %th
-    %th
 
-  - @turns.each do |turn|
+  - @inactive_turns.reverse.each do |turn|
     %tr
-      %td= turn.id
-      %td= link_to 'Show', turn
-      %td= link_to 'Edit', edit_turn_path(turn)
-      %td= link_to 'Destroy', turn, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to "Round #{ turn.round}", turn
 
 %br
 

@@ -2,7 +2,7 @@ class TurnsController < ApplicationController
   # GET /turns
   # GET /turns.json
   def index
-    @turns = Turn.all
+    @inactive_turns = Turn.inactive
 
     respond_to do |format|
       format.html # index.html.erb
