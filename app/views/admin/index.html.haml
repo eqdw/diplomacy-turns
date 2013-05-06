@@ -1,5 +1,11 @@
 %h1 ADMIN PANEL
 
+%h3 Has everyone gone?
+
+%ul 
+  - @shame_wall.each do |msg|
+    %li= msg
+
 
 = link_to "Reset game", start_game_path, :data => { :confirm => 'Are you sure?' }
 

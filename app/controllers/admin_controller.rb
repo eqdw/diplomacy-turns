@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
-  def index; end
+  def index
+    @shame_wall = User.all.map{|u| u.turns.active.first}.map{|t| t.orders.blank? ? "#{t.user.login} NEEDS TO PLACE ORDERS" : "#{t.user.login} has placed orders"}
+  end
 
 
   def next_round
