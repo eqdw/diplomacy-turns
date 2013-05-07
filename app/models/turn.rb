@@ -1,5 +1,5 @@
 class Turn < ActiveRecord::Base
-  attr_accessible :orders, :user, :round
+  attr_accessible :orders, :user, :round, :active
   belongs_to :user
 
 

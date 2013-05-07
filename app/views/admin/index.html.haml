@@ -1,10 +1,18 @@
+- shame   = "HAS NOT YET PLACED ORDERS"
+- noshame = "has placed orders"
 %h1 ADMIN PANEL
 
--#%h3 Has everyone gone?
+%h3 Has everyone gone?
 
--#%ul 
-  -#- @shame_wall.each do |msg|
-    -#%li= msg
+%ul 
+  - @shame_wall.each do |msg|
+    %span{:style => "text-decoration: underline"}= msg[0]
+    -if msg[1] == :shame
+      %strong= shame
+    -else
+      %span= noshame
+    %br
+
 
 
 = link_to "Reset game", start_game_path, :data => { :confirm => 'Are you sure?' }
