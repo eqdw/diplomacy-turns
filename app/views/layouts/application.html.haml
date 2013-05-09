@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title='DiplomacyTurns'
+    = stylesheet_link_tag "bootstrap","application", :media => "all"
+    = javascript_include_tag "jquery", "bootstrap", "sketch", "application"
+    = csrf_meta_tags
+  %body
+    .title_container
+      = image_tag('/assets/diplomacy_small.png')
+    .container
+      %p.notice= notice
+      - if alert
+        %p.alert= alert
+      .buttons_right
+        = link_to "Log out", destroy_user_session_path, :method => :delete
+      = yield

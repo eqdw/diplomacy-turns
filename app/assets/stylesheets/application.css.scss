@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@mixin gradient($start_color, $end_color) {
+  background-image: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($start_color), to($end_color));
+  background: -moz-linear-gradient(top, $start_color, $end_color);
+  background-color: ($start_color + $end_color) / 2;
+}
+
+body {
+  background-image: url('/assets/parchment.jpg');
+}
+.container {
+  //@include gradient(#c3ac81, #8c754f);
+  background-color: rgba(210, 186, 140, 0.5);
+  border: 2px solid #61533b;
+  padding: 10px;
+  margin: 10px 0;
+}
+.title_container {
+  @extend .container;
+  background: none;
+  border: none;
+  text-align: center;
+  margin-bottom: -45px;
+  width: 940px;//why is it not picking this up?
+  margin-right: auto;
+  margin-left: auto; 
+}
+h1 {
+  border-bottom: 1px solid #61533b;
+}
+
+.buttons_right {
+  text-align: right;
+}

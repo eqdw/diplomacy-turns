@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(function() {
+  $('#current_board').sketch({defaultColor: "#f00"});
+});

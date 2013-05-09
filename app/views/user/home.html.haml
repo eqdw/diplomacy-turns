@@ -1,2 +1,5 @@
-%div
-  hey check it out it's the root route
+.map_tools
+  =link_to "Pen", "#current_board", {'data-tool' => "marker", 'data-size' => '5'}
+  =link_to "Eraser", "#current_board", {'data-tool' => "eraser", 'data-size' => '15'}
+  %canvas#current_board{:width => '1000px', :height => '838px', :style => 'background: url(/assets/map.gif) no-repeat center center;'}
+  =link_to "Take Snapshot", "#current_board", {'data-download' => 'png'}
