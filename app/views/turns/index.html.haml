@@ -8,7 +8,7 @@
   %tr
     %th
 
-  - @inactive_turns.reverse.each do |turn|
+  - @inactive_turns.each do |turn|
     %tr
       %td= link_to "Round #{ turn.round}", turn
 

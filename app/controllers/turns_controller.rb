@@ -2,7 +2,7 @@ class TurnsController < ApplicationController
   # GET /turns
   # GET /turns.json
   def index
-    @inactive_turns = Turn.inactive.where(:user_id => current_user.id)
+    @inactive_turns = Turn.inactive.where(:user_id => current_user.id).order("round DESC")
     @turn = Turn.where(:user_id => current_user.id).active.first.presence || Turn.new
 
     respond_to do |format|
