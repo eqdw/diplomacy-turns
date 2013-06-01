@@ -1,8 +1,16 @@
+- orders = @turn.orders
 %p#notice= notice
 
 .orders
-  - @turn.orders.split("\n").each do |order|
-    %p= order
+  - if orders
+    - @turn.orders.split("\n").each do |order|
+      %p= order
+  - else
+    %p== #{@turn.user.email} did not submit orders.
+    %p Their government has fallen in civil war.
+    %p All of their nation's units will hold their ground.
+    %p Any units forced to retreat will be disbanded.
+      
 
 - if @turn.active
   = link_to 'Edit', edit_turn_path(@turn)
