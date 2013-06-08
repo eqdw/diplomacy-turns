@@ -7,13 +7,18 @@
 
 %ul 
   - @shame_wall.each do |msg|
-    %span{:style => "text-decoration: underline"}= msg[0]
+    %span{:style => "text-decoration: underline"}= msg[0].nation
     - if msg[1] == :shame
       %strong= shame
     - elsif msg[1] == :noshame
       %span= noshame
     - else
       %span= dead
+
+    - if msg[0].alive
+      = link_to "Defeated!", {:controller => "admin", :action => "defeat", :user_id => msg[0].id}
+
+
     %br
 
 

@@ -28,16 +28,20 @@ class AdminController < ApplicationController
     redirect_to turns_path
   end
 
+  def defeat
+    user = User.find(params[:user_id])
+    user.alive = false
+    user.save!
+    redirect_to admin_path
+  end
 
 private
   def initialize_nations
-    binding.pry
     User.all.each do |user|
       user.nation = nil
       user.alive  = false
       user.save!
     end
-    binding.pry
     User::NATIONS.each do |nation|
       next if params[nation].blank?
       user = User.find(params[nation])
@@ -55,11 +59,11 @@ private
   def initialize_shamewall
     @shame_wall = Turn.active.map do |t|
       if !t.user.alive 
-        [t.user.email, :dead]
+        [t.user, :dead]
       elsif t.orders.blank?
-        [t.user.email, :shame]
+        [t.user, :shame]
       else
-        [t.user.email, :noshame]
+        [t.user, :noshame]
       end
     end
   end

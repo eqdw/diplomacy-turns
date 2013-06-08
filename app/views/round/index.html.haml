@@ -6,4 +6,7 @@
     %th User
   - @turns.each do |turn|
     %tr
-      %td= link_to turn.user.email, turn
+      - if turn.user.alive
+        %td= link_to turn.user.nation, turn
+      - else
+        %td.dead= turn.user.nation
