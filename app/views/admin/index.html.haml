@@ -16,7 +16,8 @@
       %span= dead
 
     - if msg[0].alive
-      = link_to "Defeated!", {:controller => "admin", :action => "defeat", :user_id => msg[0].id}
+      \---------
+      = link_to " Defeated?", {:controller => "admin", :action => "defeat", :user_id => msg[0].id}
 
 
     %br
