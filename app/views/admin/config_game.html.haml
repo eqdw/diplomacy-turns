@@ -1,0 +1,9 @@
+%h1 Setup New Game
+
+= form_tag(start_game_path) do
+  - User::NATIONS.each do |nation|
+    %h3= nation
+    = select_tag nation, options_from_collection_for_select(@users, "id", "email"), :include_blank => true
+    %br
+
+  = submit_tag "Start New Game", :confirm => "This will destroy all existing game data and start a new game"
