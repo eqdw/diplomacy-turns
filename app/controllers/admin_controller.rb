@@ -58,22 +58,14 @@ private
   end
   def initialize_shamewall
     @shame_wall = User.players.map do |p|
+      binding.pry
       if !p.alive
         [p, :dead]
-      elsif p.active_turn.orders.blank?
+      elsif p.active_turn.first.orders.blank?
         [p, :shame]
       else
         [p, :noshame]
       end
-   # 
-    #@shame_wall = Turn.active.map do |t|
-      #if !t.user.alive 
-        #[t.user, :dead]
-      #elsif t.orders.blank?
-        #[t.user, :shame]
-      #else
-        #[t.user, :noshame]
-      #end
     end
   end
 end
