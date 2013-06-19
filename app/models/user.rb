@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
   NATIONS = %w{ France Italy Germany Russia Turkey Austria Britain }
 
-  scope :alive, where(:alive => true)
+  scope :alive,   where(:alive => true)
+  scope :players, where("nation IS NOT null")
   
   # Allow nil because new users won't have a nation
   # until a game is started

@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :initialize_shamewall
+  before_filter :initialize_shamewall, :only => [:index]
 
   def index; end
 
@@ -57,14 +57,23 @@ private
     end
   end
   def initialize_shamewall
-    @shame_wall = Turn.active.map do |t|
-      if !t.user.alive 
-        [t.user, :dead]
-      elsif t.orders.blank?
-        [t.user, :shame]
+    @shame_wall = User.players.map do |p|
+      if !p.alive
+        [p, :dead]
+      elsif p.active_turn.orders.blank?
+        [p, :shame]
       else
-        [t.user, :noshame]
+        [p, :noshame]
       end
+   # 
+    #@shame_wall = Turn.active.map do |t|
+      #if !t.user.alive 
+        #[t.user, :dead]
+      #elsif t.orders.blank?
+        #[t.user, :shame]
+      #else
+        #[t.user, :noshame]
+      #end
     end
   end
 end
